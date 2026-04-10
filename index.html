@@ -1,321 +1,303 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DSGE Landing Page v1</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
-<body class="min-h-screen bg-[radial-gradient(circle_at_top,#113127_0%,#09111d_38%,#04070d_100%)] text-slate-100">
-  <div class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/65 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
-      <a href="#hero" class="flex items-center gap-3 text-left">
-        <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 ring-1 ring-emerald-300/20">
-          <span class="text-emerald-300 font-bold">↻</span>
-        </div>
-        <div>
-          <div class="text-sm font-semibold tracking-[0.24em] text-slate-200">DSGE</div>
-          <div class="text-xs text-slate-400">Circular deployment intelligence</div>
-        </div>
-      </a>
-      <div class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-        <a href="#solution" class="transition hover:text-white">Solution</a>
-        <a href="#comparison" class="transition hover:text-white">Comparison</a>
-        <a href="#deployment" class="transition hover:text-white">Deployment</a>
-        <a href="#stakeholders" class="transition hover:text-white">Stakeholders</a>
-        <a href="#contact" class="transition hover:text-white">Contact</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="#comparison" class="hidden rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200 transition hover:border-white/20 hover:bg-white/5 md:inline-flex">See the difference</a>
-        <a href="#contact" class="inline-flex items-center gap-2 rounded-2xl bg-emerald-400 px-4 py-2 text-sm font-medium text-slate-950 transition hover:translate-y-[-1px]">Start pilot →</a>
-      </div>
-    </div>
-  </div>
+export default function DSGEOperatorDemo() {
+  const material = "PP";
+  const purity = 94;
+  const weight = 25;
+  const carbonEligible = true;
+  const route = purity >= 92 ? "Manufacturing" : purity >= 80 ? "Resale / Secondary Market" : "Recycling";
+  const baseValue = purity >= 92 ? 1.85 : purity >= 80 ? 1.1 : 0.42;
+  const carbonValue = carbonEligible ? 0.18 : 0;
+  const totalValue = (baseValue + carbonValue).toFixed(2);
+  const revenue = (Number(totalValue) * weight).toFixed(2);
+  const co2 = 8.7;
+  const compliance = Math.min(100, purity + (carbonEligible ? 5 : 0));
 
-  <section id="hero" class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(16,185,129,0.14),transparent_35%,rgba(59,130,246,0.08)_70%,transparent)]"></div>
-    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:px-6 md:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center relative">
-      <div>
-        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-300/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-emerald-200">
-          Mission-ready circular operations
-        </div>
-        <h1 class="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
-          The public-facing landing page for rapid material diversion, traceable operations, and visible ESG value.
-        </h1>
-        <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-          DSGE helps partners move from fragmented recycling activity to a coordinated operating model with measurable reporting,
-          stronger chain of custody, and a faster path from pilot to scalable regional deployment.
-        </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-400 px-5 py-3 text-sm font-medium text-slate-950 transition hover:translate-y-[-1px]">Request a pilot →</a>
-          <a href="#deployment" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-slate-100 transition hover:border-white/20 hover:bg-white/10">See deployment capability</a>
-        </div>
+  const cards = [
+    { label: "Material", value: material },
+    { label: "Purity", value: `${purity}%` },
+    { label: "Weight", value: `${weight} lbs` },
+    { label: "Carbon Eligible", value: carbonEligible ? "Yes" : "No" },
+  ];
 
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/10 backdrop-blur-sm">
-            <div class="text-2xl font-semibold text-white">6+</div>
-            <div class="mt-1 text-sm font-medium text-slate-200">Pilot cities</div>
-            <div class="mt-2 text-xs leading-6 text-slate-400">Detroit, Lansing, DeWitt, Grand Ledge, Okemos, East Lansing</div>
-          </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/10 backdrop-blur-sm">
-            <div class="text-2xl font-semibold text-white">Rapid</div>
-            <div class="mt-1 text-sm font-medium text-slate-200">Deployment mode</div>
-            <div class="mt-2 text-xs leading-6 text-slate-400">Built for low-notice diversion events and scheduled pickups</div>
-          </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/10 backdrop-blur-sm">
-            <div class="text-2xl font-semibold text-white">PP</div>
-            <div class="mt-1 text-sm font-medium text-slate-200">Primary material focus</div>
-            <div class="mt-2 text-xs leading-6 text-slate-400">Polypropylene-first market entry with scalable expansion path</div>
-          </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/10 backdrop-blur-sm">
-            <div class="text-2xl font-semibold text-white">Live ESG</div>
-            <div class="mt-1 text-sm font-medium text-slate-200">Reporting outcome</div>
-            <div class="mt-2 text-xs leading-6 text-slate-400">Traceability, chain of custody, and impact visibility</div>
-          </div>
-        </div>
-      </div>
+  const stages = [
+    { name: "Input Stream", detail: "Mixed plastics received" },
+    { name: "OpenCV Detection", detail: "Material identified and contamination flagged" },
+    { name: "Smart Routing", detail: `Best route selected: ${route}` },
+    { name: "Value Output", detail: `Estimated revenue: $${revenue}` },
+  ];
 
-      <div class="relative">
-        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.65)] backdrop-blur-xl">
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-3xl border border-white/10 bg-slate-950/50 p-5">
-              <div class="text-sm font-medium text-slate-200">Rapid deployment</div>
-              <p class="mt-3 text-sm leading-7 text-slate-400">Activate collection, pickup, staging, and reporting for low-notice or planned material events.</p>
+  const roles = [
+    {
+      title: "Installation Technician",
+      text: "Sets up cameras, lighting, conveyor controls, and scan points.",
+    },
+    {
+      title: "Vision Systems Operator",
+      text: "Monitors detection accuracy, throughput, and routing confidence.",
+    },
+    {
+      title: "Maintenance Engineer",
+      text: "Calibrates optics, cleans sensors, and tunes sorting performance.",
+    },
+  ];
+
+  const detected = [
+    { id: "A-104", type: "PP", confidence: "98%", action: "Manufacturing" },
+    { id: "B-227", type: "HDPE", confidence: "95%", action: "Resale" },
+    { id: "C-081", type: "Mixed", confidence: "82%", action: "Recycling" },
+    { id: "D-310", type: "PP", confidence: "97%", action: "Manufacturing" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-white p-6 md:p-10">
+      <div className="max-w-7xl mx-auto space-y-8">
+        <section className="rounded-3xl border border-emerald-800/40 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/30 p-8 shadow-2xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-200">
+                DSGE Operator Demo Preview
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+                Waste → Vision → Routing → Value
+              </h1>
+              <p className="text-slate-300 text-lg leading-relaxed">
+                This mock shows how DSGE can present OpenCV sorting, high-tech workforce roles,
+                smart routing, and monetization in one operator-facing flow.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <button className="rounded-2xl bg-emerald-600 px-5 py-3 font-semibold shadow-lg shadow-emerald-900/30">
+                  Deploy DSGE
+                </button>
+                <button className="rounded-2xl border border-slate-700 px-5 py-3 font-semibold text-slate-200">
+                  View System
+                </button>
+              </div>
             </div>
-            <div class="rounded-3xl border border-white/10 bg-slate-950/50 p-5">
-              <div class="text-sm font-medium text-slate-200">Chain of custody</div>
-              <p class="mt-3 text-sm leading-7 text-slate-400">Support traceable handling steps from origin through movement, aggregation, and downstream use.</p>
-            </div>
-            <div class="rounded-3xl border border-white/10 bg-slate-950/50 p-5">
-              <div class="text-sm font-medium text-slate-200">ESG narrative</div>
-              <p class="mt-3 text-sm leading-7 text-slate-400">Translate operational work into a simple story partners can communicate in under 60 seconds.</p>
-            </div>
-            <div class="rounded-3xl border border-white/10 bg-slate-950/50 p-5">
-              <div class="text-sm font-medium text-slate-200">Scalable by cluster</div>
-              <p class="mt-3 text-sm leading-7 text-slate-400">Expand proven workflows city by city and partner by partner instead of rebuilding the system each time.</p>
+
+            <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-5">
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <div className="text-sm text-slate-400">Live Detection View</div>
+                  <div className="text-lg font-semibold">OpenCV Sorting Window</div>
+                </div>
+                <div className="rounded-full bg-emerald-500/15 px-3 py-1 text-sm text-emerald-300">
+                  Active
+                </div>
+              </div>
+              <div className="relative h-72 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden border border-slate-800">
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.5),transparent_55%)]" />
+                <div className="absolute inset-x-0 top-8 h-16 bg-slate-700/70" />
+                <div className="absolute inset-x-0 top-24 h-16 bg-slate-600/60" />
+                <div className="absolute left-10 top-12 rounded-xl border-2 border-cyan-400 px-3 py-2 text-sm bg-slate-950/80">
+                  PP detected · 98%
+                </div>
+                <div className="absolute right-12 top-28 rounded-xl border-2 border-emerald-400 px-3 py-2 text-sm bg-slate-950/80">
+                  Route: Manufacturing
+                </div>
+                <div className="absolute left-1/3 bottom-8 rounded-xl border-2 border-amber-400 px-3 py-2 text-sm bg-slate-950/80">
+                  Contamination: Low
+                </div>
+                <div className="absolute inset-y-0 left-1/2 w-px bg-cyan-400/40" />
+                <div className="absolute inset-x-0 top-1/2 h-px bg-cyan-400/20" />
+              </div>
             </div>
           </div>
-          <div class="mt-4 rounded-3xl border border-emerald-300/15 bg-emerald-300/10 p-5">
-            <div class="text-xs uppercase tracking-[0.24em] text-emerald-200">60-second value block</div>
-            <p class="mt-3 text-sm leading-7 text-emerald-50">
-              DSGE gives organizations a faster way to divert material, show what happened to it, measure impact, and build a shared compliance and community story without standing up the entire infrastructure alone.
-            </p>
+        </section>
+
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {cards.map((card) => (
+            <div key={card.label} className="rounded-3xl border border-slate-800 bg-slate-900 p-5 shadow-xl">
+              <div className="text-sm text-slate-400">{card.label}</div>
+              <div className="mt-2 text-2xl font-bold">{card.value}</div>
+            </div>
+          ))}
+        </section>
+
+        <section className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className="text-2xl font-bold">System Flow</h2>
+                <p className="text-slate-400">Operator-facing sequence from intake to value output</p>
+              </div>
+              <div className="rounded-full bg-cyan-500/10 px-3 py-1 text-sm text-cyan-300">Frame 2–4 Preview</div>
+            </div>
+            <div className="grid md:grid-cols-4 gap-4">
+              {stages.map((stage, index) => (
+                <div key={stage.name} className="relative rounded-2xl border border-slate-800 bg-slate-950 p-4 min-h-36">
+                  <div className="text-xs uppercase tracking-[0.2em] text-cyan-300">Step {index + 1}</div>
+                  <div className="mt-2 text-lg font-semibold">{stage.name}</div>
+                  <div className="mt-2 text-sm text-slate-400 leading-relaxed">{stage.detail}</div>
+                  {index < stages.length - 1 && (
+                    <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-2xl">→</div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="border-y border-white/10 bg-black/20 py-5">
-    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-4 md:px-6">
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Manufacturing</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Automotive</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Municipal</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Universities</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Material Recovery</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Logistics</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">ESG / Compliance</div>
-      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300">Grant / Community</div>
-    </div>
-  </section>
-
-  <section id="solution" class="mx-auto max-w-7xl px-4 py-20 md:px-6">
-    <div class="max-w-3xl">
-      <div class="mb-3 inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-300">Solution</div>
-      <h2 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">A cleaner way to explain what DSGE does</h2>
-      <p class="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-        This page is built to help prospects understand the mission quickly: where the material starts, how the pilot activates, what gets measured, and why the partner relationship creates more value than a normal disposal-only model.
-      </p>
-    </div>
-
-    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-        <h3 class="text-lg font-semibold text-white">Diversion as infrastructure</h3>
-        <p class="mt-3 text-sm leading-7 text-slate-400">Turn recyclable materials into measurable, trackable value instead of unmanaged waste and missed reporting opportunities.</p>
-      </div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-        <h3 class="text-lg font-semibold text-white">Compliance-ready workflow</h3>
-        <p class="mt-3 text-sm leading-7 text-slate-400">Support ISO-aligned operating discipline, documented chain of custody, and cleaner partner reporting from day one.</p>
-      </div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-        <h3 class="text-lg font-semibold text-white">Operator + executive visibility</h3>
-        <p class="mt-3 text-sm leading-7 text-slate-400">Give operators simple task flow while leadership sees volume, response time, partner status, and impact metrics.</p>
-      </div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-        <h3 class="text-lg font-semibold text-white">Rapid deployment mode</h3>
-        <p class="mt-3 text-sm leading-7 text-slate-400">Stand up a collection and response workflow fast for no-notice events, overflow material, or pilot activation.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="comparison" class="bg-white/[0.03] py-20">
-    <div class="mx-auto max-w-7xl px-4 md:px-6">
-      <div class="max-w-3xl">
-        <div class="mb-3 inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-300">Comparison</div>
-        <h2 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">Why the partner model feels different</h2>
-      </div>
-      <div class="mt-12 grid gap-6 lg:grid-cols-2">
-        <div class="rounded-[2rem] border border-white/10 bg-slate-950/50 p-6">
-          <div class="text-lg font-semibold text-white">Traditional disposal</div>
-          <ul class="mt-6 space-y-4 text-sm leading-7 text-slate-300 list-disc list-inside">
-            <li>Low visibility after pickup</li>
-            <li>Limited community impact story</li>
-            <li>Cost center mindset</li>
-            <li>Minimal chain-of-custody intelligence</li>
-          </ul>
-        </div>
-        <div class="rounded-[2rem] border border-white/10 bg-slate-950/50 p-6">
-          <div class="text-lg font-semibold text-white">DSGE partner model</div>
-          <ul class="mt-6 space-y-4 text-sm leading-7 text-slate-300 list-disc list-inside">
-            <li>Material traceability and partner accountability</li>
-            <li>Shared ESG and circularity narrative</li>
-            <li>Pilot-to-scale operating model</li>
-            <li>Rapid-response deployment capability</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="deployment" class="mx-auto max-w-7xl px-4 py-20 md:px-6">
-    <div class="max-w-3xl">
-      <div class="mb-3 inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-300">Deployment capability</div>
-      <h2 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">Fast path from opportunity to operating rhythm</h2>
-      <p class="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-        This is the simple flow for public visitors: identify the material stream, activate the pilot, measure the result, and scale what works.
-      </p>
-    </div>
-
-    <div class="mt-12 grid gap-5 lg:grid-cols-4">
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6"><div class="mb-5 text-lg font-semibold text-emerald-300">1</div><h3 class="text-lg font-semibold text-white">Identify material opportunity</h3><p class="mt-3 text-sm leading-7 text-slate-400">Map where PP or adjacent streams are being generated, lost, stockpiled, or under-reported.</p></div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6"><div class="mb-5 text-lg font-semibold text-emerald-300">2</div><h3 class="text-lg font-semibold text-white">Activate pilot workflow</h3><p class="mt-3 text-sm leading-7 text-slate-400">Deploy collection, handling, tagging, routing, and partner coordination with a simple operating picture.</p></div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6"><div class="mb-5 text-lg font-semibold text-emerald-300">3</div><h3 class="text-lg font-semibold text-white">Measure and report</h3><p class="mt-3 text-sm leading-7 text-slate-400">Track tons, pickups, cycle time, participation, and impact metrics in a format leadership can act on.</p></div>
-      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6"><div class="mb-5 text-lg font-semibold text-emerald-300">4</div><h3 class="text-lg font-semibold text-white">Expand by cluster</h3><p class="mt-3 text-sm leading-7 text-slate-400">Roll successful playbooks across nearby facilities, cities, and partner ecosystems without rebuilding from scratch.</p></div>
-    </div>
-  </section>
-
-  <section id="stakeholders" class="bg-white/[0.03] py-20">
-    <div class="mx-auto max-w-7xl px-4 md:px-6">
-      <div class="max-w-3xl">
-        <div class="mb-3 inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-300">Stakeholders</div>
-        <h2 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">Mission · Vision · Values</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-          A simple stakeholder-facing section added to the approved original layout without changing the visual style.
-        </p>
-      </div>
-
-      <div class="mt-12 grid gap-5 md:grid-cols-3">
-        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-          <h3 class="text-lg font-semibold text-white">Mission</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-400">
-            Deploy practical circular systems that convert material into measurable value.
-          </p>
-        </div>
-
-        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-          <h3 class="text-lg font-semibold text-white">Vision</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-400">
-            A scalable system where diversion, workforce, and ESG operate as one.
-          </p>
-        </div>
-
-        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10">
-          <h3 class="text-lg font-semibold text-white">Values</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-400">
-            Integrity · Readiness · Partnership · Execution
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="bg-white/[0.03] py-20">
-    <div class="mx-auto max-w-7xl px-4 md:px-6">
-      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <div class="max-w-3xl">
-            <div class="mb-3 inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-300">Lead capture</div>
-            <h2 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">A working contact section you can keep building</h2>
-            <p class="mt-4 text-sm leading-7 text-slate-300 md:text-base">This static HTML version is ready for quick edits and simple deployment.</p>
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-bold">Value Output</h2>
+            <div className="mt-5 space-y-4">
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+                <div className="text-sm text-slate-400">Selected Route</div>
+                <div className="text-2xl font-bold mt-1">{route}</div>
+              </div>
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+                <div className="text-sm text-slate-400">Value per lb</div>
+                <div className="text-2xl font-bold mt-1">${totalValue}</div>
+              </div>
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+                <div className="text-sm text-slate-400">Estimated Revenue</div>
+                <div className="text-2xl font-bold mt-1">${revenue}</div>
+              </div>
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+                <div className="text-sm text-slate-400">CO₂ Reduced</div>
+                <div className="text-2xl font-bold mt-1">{co2} kg</div>
+              </div>
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+                <div className="text-sm text-slate-400">Compliance Score</div>
+                <div className="text-2xl font-bold mt-1">{compliance}/100</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="rounded-[2rem] border border-white/10 bg-slate-950/60 p-6 shadow-2xl shadow-black/20">
-          <form action="mailto:tia@dsge-info.com" method="post" enctype="text/plain" class="grid gap-4 md:grid-cols-2">
+        </section>
+
+        <section className="grid lg:grid-cols-2 gap-6">
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className="text-2xl font-bold">Detected Material Queue</h2>
+                <p className="text-slate-400">Illustrative operator table for sorted items</p>
+              </div>
+              <div className="text-sm text-emerald-300">Updated 2.3s ago</div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-slate-800">
+              <table className="w-full text-left">
+                <thead className="bg-slate-950 text-slate-300 text-sm">
+                  <tr>
+                    <th className="px-4 py-3">ID</th>
+                    <th className="px-4 py-3">Type</th>
+                    <th className="px-4 py-3">Confidence</th>
+                    <th className="px-4 py-3">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {detected.map((item) => (
+                    <tr key={item.id} className="border-t border-slate-800 bg-slate-900">
+                      <td className="px-4 py-3">{item.id}</td>
+                      <td className="px-4 py-3">{item.type}</td>
+                      <td className="px-4 py-3">{item.confidence}</td>
+                      <td className="px-4 py-3">{item.action}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-bold">High-Tech Workforce Roles</h2>
+            <div className="mt-5 grid gap-4">
+              {roles.map((role) => (
+                <div key={role.title} className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                  <div className="text-lg font-semibold">{role.title}</div>
+                  <div className="mt-2 text-sm text-slate-400 leading-relaxed">{role.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+              <section className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className="text-2xl font-bold">Add-Value Instructions</h2>
+                <p className="text-slate-400">Use this sequence to pull the system full circle from intake to monetization</p>
+              </div>
+              <div className="rounded-full bg-amber-500/10 px-3 py-1 text-sm text-amber-300">Operational Playbook</div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm uppercase tracking-[0.2em] text-cyan-300">1. Capture</div>
+                <div className="mt-2 text-lg font-semibold">Receive and identify material</div>
+                <div className="mt-2 text-sm text-slate-400 leading-relaxed">Log source, weight, date, site, and contamination notes. Use the camera layer to classify the material before it is routed.</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm uppercase tracking-[0.2em] text-cyan-300">2. Verify</div>
+                <div className="mt-2 text-lg font-semibold">Confirm confidence and purity</div>
+                <div className="mt-2 text-sm text-slate-400 leading-relaxed">If confidence is high, proceed automatically. If confidence is low, send the item to manual review so operators protect throughput and data quality.</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm uppercase tracking-[0.2em] text-cyan-300">3. Route</div>
+                <div className="mt-2 text-lg font-semibold">Select the highest-value path</div>
+                <div className="mt-2 text-sm text-slate-400 leading-relaxed">Route to manufacturing when purity is high, resale when market value is favorable, and recycling when that is the safest and fastest value recovery path.</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm uppercase tracking-[0.2em] text-cyan-300">4. Monetize</div>
+                <div className="mt-2 text-lg font-semibold">Turn operations into measurable revenue</div>
+                <div className="mt-2 text-sm text-slate-400 leading-relaxed">Show price per pound, processing margin, avoided disposal cost, compliance reporting value, and carbon or sustainability value where applicable.</div>
+              </div>
+            </div>
+            <div className="mt-4 rounded-2xl border border-emerald-800/40 bg-emerald-950/20 p-4 text-sm text-slate-300 leading-relaxed">
+              <span className="font-semibold text-emerald-300">If / then / else logic:</span> If material confidence is 90% or higher and purity is 92% or higher, send to manufacturing. If purity is between 80% and 91%, evaluate resale versus recycling. Else hold for manual review or standard recycling. If carbon accounting applies, add ESG value to the route before final selection.
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-bold">Revenue Engine</h2>
+            <div className="mt-5 space-y-3">
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm text-slate-400">Service Revenue</div>
+                <div className="mt-1 font-semibold">Installation, operation, maintenance, training</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm text-slate-400">Processing Revenue</div>
+                <div className="mt-1 font-semibold">Tipping, sorting, aggregation, throughput fees</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm text-slate-400">Product Revenue</div>
+                <div className="mt-1 font-semibold">Resale, feedstock, manufactured goods</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm text-slate-400">Data Revenue</div>
+                <div className="mt-1 font-semibold">Compliance reporting, subscriptions, dashboards, audit support</div>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                <div className="text-sm text-slate-400">Impact Revenue</div>
+                <div className="mt-1 font-semibold">Scope 3 support, carbon and sustainability value claims</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+          <div className="flex items-center justify-between mb-5">
             <div>
-              <label class="mb-2 block text-sm text-slate-300">Name</label>
-              <input name="name" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white" placeholder="Your name" />
+              <h2 className="text-2xl font-bold">Knowledge Layer and References</h2>
+              <p className="text-slate-400">Outside anchors that strengthen the DSGE operating story</p>
             </div>
-            <div>
-              <label class="mb-2 block text-sm text-slate-300">Organization</label>
-              <input name="organization" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white" placeholder="Organization name" />
+            <div className="rounded-full bg-cyan-500/10 px-3 py-1 text-sm text-cyan-300">Credibility Layer</div>
+          </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 text-sm">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+              <div className="font-semibold">EPA Waste Hierarchy</div>
+              <div className="mt-2 text-slate-400 leading-relaxed">Supports the operational preference for reduction, reuse, and recycling over disposal, which strengthens the diversion and resource recovery narrative.</div>
             </div>
-            <div>
-              <label class="mb-2 block text-sm text-slate-300">Email</label>
-              <input name="email" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white" placeholder="name@organization.com" />
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+              <div className="font-semibold">GHG Protocol Scope 3</div>
+              <div className="mt-2 text-slate-400 leading-relaxed">Supports how DSGE can help customers track value-chain emissions and document measurable environmental outcomes.</div>
             </div>
-            <div>
-              <label class="mb-2 block text-sm text-slate-300">Interest</label>
-              <select name="interest" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white">
-                <option class="bg-slate-950">Rapid deployment pilot</option>
-                <option class="bg-slate-950">Manufacturing partnership</option>
-                <option class="bg-slate-950">Municipal / community collaboration</option>
-                <option class="bg-slate-950">ESG / reporting support</option>
-              </select>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+              <div className="font-semibold">SBIR / STTR Commercialization</div>
+              <div className="mt-2 text-slate-400 leading-relaxed">Supports the case that DSGE is not only a service workflow but a scalable technology platform with commercialization pathways.</div>
             </div>
-            <div class="md:col-span-2 flex flex-col gap-3 sm:flex-row">
-              <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-400 px-5 py-3 text-sm font-medium text-slate-950">Email DSGE</button>
-              <a href="mailto:tia@dsge-info.com" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white">Open mail client</a>
-            </div>
-          </form>
-
-          <div class="mt-6 text-sm text-slate-300 space-y-2">
-            <div>
-              Email:
-              <a href="mailto:tia@dsge-info.com" class="text-emerald-300 hover:text-emerald-200">
-                tia@dsge-info.com
-              </a>
-            </div>
-
-            <div>
-              Phone:
-              <a href="tel:7348845925" class="text-emerald-300 hover:text-emerald-200 ml-2">
-                734.884.5925
-              </a>
-              /
-              <a href="tel:5172828301" class="text-emerald-300 hover:text-emerald-200 ml-1">
-                517.282.8301
-              </a>
-            </div>
-
-            <div>
-              Address:
-              <a href="https://maps.google.com/?q=4860 Washtenaw Ave Suite I Ann Arbor MI 48108"
-                 target="_blank"
-                 rel="noreferrer"
-                 class="text-emerald-300 hover:text-emerald-200 ml-2">
-                4860 Washtenaw Ave Suite I, Ann Arbor, MI 48108
-              </a>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+              <div className="font-semibold">NIST AI RMF</div>
+              <div className="mt-2 text-slate-400 leading-relaxed">Supports trustworthy AI operations, especially when computer vision and automated routing influence operational decisions.</div>
             </div>
           </div>
-
-          <p class="mt-4 text-xs leading-6 text-slate-500">Replace the email address, copy, partner logos, metrics, and deployment details with your live business data as the build continues.</p>
-        </div>
+        </section>
       </div>
     </div>
-  </section>
-
-  <footer class="border-t border-white/10 bg-black/30">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-6">
-      <div>© 2026 DSGE. Circular deployment intelligence for real-world operations.</div>
-      <div class="flex items-center gap-4">
-        <a href="#hero" class="transition hover:text-white">Top</a>
-        <a href="#stakeholders" class="transition hover:text-white">Stakeholders</a>
-        <a href="#contact" class="transition hover:text-white">Contact</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+  );
+}
